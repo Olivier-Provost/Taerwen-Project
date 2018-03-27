@@ -33,8 +33,14 @@ public class PhysicsObject : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		
+        targetVelocity = Vector2.zero;
+        ComputeVelocity();
 	}
+
+    protected virtual void ComputeVelocity()
+    {
+
+    }
 
     void FixedUpdate()
     {
@@ -45,7 +51,7 @@ public class PhysicsObject : MonoBehaviour {
 
         Vector2 deltaPosition = velocity * Time.deltaTime;
 
-        Vector2 moveAlongGround = new Vector2(groundNormal.y, groundNormal.x);
+        Vector2 moveAlongGround = new Vector2(groundNormal.y, -groundNormal.x);
 
         Vector2 move = moveAlongGround * deltaPosition.x;
 
