@@ -10,6 +10,8 @@ public class PlayerController : PhysicsObject {
     public float maxSpeed = 7;
     public float jumpTakeOffSpeed = 7;
 
+    bool moving;
+
     private SpriteRenderer spriteRenderer;
     private Animator animator;
 
@@ -42,6 +44,15 @@ public class PlayerController : PhysicsObject {
         {
             spriteRenderer.flipX = !spriteRenderer.flipX;
         }
+        moving = false;
+
+        if (move.x != 0 && grounded)
+        {
+            moving = true;
+        }
+
+        animator.SetBool("Grounded", grounded);
+        animator.SetBool("Moving", moving);
 
         targetVelocity = move * maxSpeed;
     }
