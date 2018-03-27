@@ -12,6 +12,7 @@ public class PlayerController : PhysicsObject {
 
     bool moving;
     bool attacking;
+    bool doubleJump;    //boolean to make double Jump
 
     private SpriteRenderer spriteRenderer;
     private Animator animator;
@@ -33,9 +34,20 @@ public class PlayerController : PhysicsObject {
 
         move.x = Input.GetAxis("Move");
 
-        if (Input.GetButtonDown("Jump") && grounded)
+        if (Input.GetButtonDown("Jump"))
         {
-            velocity.y = jumpTakeOffSpeed;
+
+            if (grounded) {
+
+                velocity.y = jumpTakeOffSpeed;
+                doubleJump = true;  // Allow to double Jump
+            }else
+            {
+                if (doubleJump) {
+                    doubleJump = false; // no more Jump
+                    velocity.y = jumpTakeOffSpeed;
+                }
+            }
         }
         else if (Input.GetButtonUp("Jump"))
         {
