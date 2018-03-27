@@ -10,9 +10,13 @@ public class PlayerController : PhysicsObject {
     public float maxSpeed = 7;
     public float jumpTakeOffSpeed = 7;
 
-    private void Start()
-    {
+    private SpriteRenderer spriteRenderer;
+    private Animator animator;
 
+    private void Awake()
+    {
+        spriteRenderer = GetComponent<SpriteRenderer>();
+        animator = GetComponent<Animator>();
     }
 
     protected override void ComputeVelocity()
@@ -32,6 +36,13 @@ public class PlayerController : PhysicsObject {
                 velocity.y *= 0.5f;
             }
         }
+
+        bool flipSprite = (spriteRenderer.flipX ? (move.x > 0.01f) : (move.x < -0.01f));
+        if (flipSprite)
+        {
+            spriteRenderer.flipX = !spriteRenderer.flipX;
+        }
+
         targetVelocity = move * maxSpeed;
     }
 }
