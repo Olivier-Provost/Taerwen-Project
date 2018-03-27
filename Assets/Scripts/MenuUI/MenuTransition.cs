@@ -11,4 +11,9 @@ public class MenuTransition : MonoBehaviour {
         SceneManager.LoadScene(sceneName);
 
     }
+    public void DoQuit()
+    {
+        Application.Quit();
+    }
+
 }
