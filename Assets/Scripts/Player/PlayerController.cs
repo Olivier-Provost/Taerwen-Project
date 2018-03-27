@@ -21,9 +21,13 @@ public class PlayerController : PhysicsObject {
         spriteRenderer = GetComponent<SpriteRenderer>();
         animator = GetComponent<Animator>();
     }
-   
-   
-    protected override void ComputeVelocity()
+
+	private void OnTriggerEnter2D(Collider2D collision) {
+        if (collision.CompareTag("Slime") && CurrentHealth > 0)
+            CurrentHealth -= 1;
+	}	
+
+	protected override void ComputeVelocity()
     {
         Vector2 move = Vector2.zero;
 

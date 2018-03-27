@@ -15,6 +15,7 @@ public class HeartScrypt : MonoBehaviour {
     
     void Update()
     {
+        Debug.Log(player.CurrentHealth);
         HeartUI.sprite = heartSprites[player.CurrentHealth];
     }
 }
