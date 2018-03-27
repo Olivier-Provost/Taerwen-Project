@@ -9,6 +9,8 @@ public class PlayerController : MonoBehaviour {
     Vector2 forceToAdd;
     public float maxSpeed;
     public float playerSpeed = 1f;
+    public int CurrentHealth = 3;
+    public int maxHealth = 5;
 
     private void Start()
     {
