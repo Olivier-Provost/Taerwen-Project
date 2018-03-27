@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerController : PhysicsObject {
 
-    public int CurrentHealth = 3;
+    public int CurrentHealth = 5;
     public int maxHealth = 5;
 
     public float maxSpeed = 7;
@@ -20,7 +20,8 @@ public class PlayerController : PhysicsObject {
         spriteRenderer = GetComponent<SpriteRenderer>();
         animator = GetComponent<Animator>();
     }
-
+   
+   
     protected override void ComputeVelocity()
     {
         Vector2 move = Vector2.zero;
